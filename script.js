@@ -44,7 +44,7 @@ if (!window.location.href.match(/\/item\?/)) { // ignore if displaying a news it
 
     // check which pieces of news have already been marked read and change their color
     $(".subtext").each(function(i,sub) {
-        var mainlink = $(sub.parentNode.previousElementSibling.childNodes[4].childNodes[1]); // fixed after HN change April 17, 2015
+        var mainlink = $(".title a", $(sub).parent().prev()).first()
 
         titles++;
 
@@ -98,7 +98,7 @@ if (!window.location.href.match(/\/item\?/)) { // ignore if displaying a news it
 
         $(".mark_all_read").click(function(){
             $(".subtext").each(function(i,sub) {
-            var mainlink = $(sub.parentNode.previousElementSibling.childNodes[4].childNodes[1]); // fixed after HN change April 17, 2015
+            var mainlink = $(".title a", $(sub).parent().prev()).first()
 
 
                 // add the link to the "read" ones
@@ -219,7 +219,8 @@ if (!window.location.href.match(/\/item\?/)) { // ignore if displaying a news it
                 if (parents.length > 0) {
                     var parent = parents[parents.length-1];
 
-                    $("<span"+(first_child ? " class='showparent_firstchild'" : "")+"> | <span class='showparent'>show parent</span></span>").appendTo($($(node).children()[0]).children(".comhead")).
+                    $("<span"+(first_child ? " class='showparent_firstchild'" : "")+"> | <span class='showparent'>show parent</span></span>").
+                        appendTo($(node).find('span.comhead').get(0)).
                         children(".showparent").
                         hover(
                         (function(parent, node){ return function() {
