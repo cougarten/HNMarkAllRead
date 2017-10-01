@@ -16,5 +16,10 @@
   "web_accessible_resources": [
     "images/HNMarkAllRead-18.png",
     "styles.css"
-  ]
+  ],
+  "applications": {
+	"gecko": {
+	  "id": "HNMarkAllRead@example.org"
+	}
+  }
 }
